@@ -17,20 +17,20 @@
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
     body{background:var(--bg);color:var(--text)}
 
-    /* ======= HEADER (brand di pojok kiri, menu di tengah, tombol di kanan) ======= */
+  
     header{background:#fff;border-bottom:1px solid var(--border)}
     .header-inner{
       width:100%;
-      padding:12px 0;                    /* nol di kiri/kanan agar brand bisa benar2 kiri */
+      padding:12px 0;                    
       display:grid;
-      grid-template-columns: 1fr auto 1fr;/* kiri & kanan seimbang -> nav pasti center */
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
     }
     /* BRAND kiri menempel pojok */
     .brand{
       grid-column:1;
       justify-self:start;
-      padding-left:12px;                  /* jarak kecil agar tidak mentok layar */
+      padding-left:12px;                  
       display:flex;
       align-items:flex-start;
       gap:12px;
@@ -41,19 +41,19 @@
     .brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
     .brand-subtitle{font-size:12.5px;color:var(--muted)}
 
-    /* NAV tepat di tengah layar */
+   
     .main-nav{grid-column:2;justify-self:center}
     .main-nav ul{list-style:none;display:flex;gap:30px}
     .main-nav a{color:#555;text-decoration:none;font-weight:600}
 
-    /* CTA kanan menempel pojok */
+
     .cta{grid-column:3;justify-self:end;padding-right:12px}
     .btn-kontak{
       text-decoration:none;border:2px solid var(--primary);color:var(--primary);
       padding:8px 16px;border-radius:999px;font-weight:700;background:#fff;white-space:nowrap;
     }
 
-    /* Responsif */
+
     @media (max-width:860px){
       .header-inner{grid-template-columns:1fr;row-gap:10px;text-align:center}
       .brand{justify-self:start;text-align:left}
@@ -113,7 +113,7 @@
   <div class="hero">
     <h2>Form Laporan Tindakan Bullying/Kekerasan Pada Anak</h2>
 
-    <form action="https://formspree.io/f/mqalbodp" method="POST">
+    <form action="https://formspree.io/f/mldllvny" method="POST">
       <label for="Nama">Nama:</label>
       <input id="nama" type="text" name="Nama" required>
 
@@ -157,3 +157,4 @@
   </footer>
 </body>
 </html>
+
