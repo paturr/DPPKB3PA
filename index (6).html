@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Bullying Campaign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{
+      --primary:#0074e4;
+      --text:#333;
+      --muted:#666;
+      --border:#e6e6e6;
+      --bg:#eee;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+    body{background:var(--bg);color:var(--text)}
+
+    /* ======= HEADER (brand di pojok kiri, menu di tengah, tombol di kanan) ======= */
+    header{background:#fff;border-bottom:1px solid var(--border)}
+    .header-inner{
+      width:100%;
+      padding:12px 0;                    /* nol di kiri/kanan agar brand bisa benar2 kiri */
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;/* kiri & kanan seimbang -> nav pasti center */
+      align-items:center;
+    }
+    /* BRAND kiri menempel pojok */
+    .brand{
+      grid-column:1;
+      justify-self:start;
+      padding-left:12px;                  /* jarak kecil agar tidak mentok layar */
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      min-width:260px;
+    }
+    .brand img{height:44px;width:auto;display:block}
+    .brand-text{line-height:1.15}
+    .brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
+    .brand-subtitle{font-size:12.5px;color:var(--muted)}
+
+    /* NAV tepat di tengah layar */
+    .main-nav{grid-column:2;justify-self:center}
+    .main-nav ul{list-style:none;display:flex;gap:30px}
+    .main-nav a{color:#555;text-decoration:none;font-weight:600}
+
+    /* CTA kanan menempel pojok */
+    .cta{grid-column:3;justify-self:end;padding-right:12px}
+    .btn-kontak{
+      text-decoration:none;border:2px solid var(--primary);color:var(--primary);
+      padding:8px 16px;border-radius:999px;font-weight:700;background:#fff;white-space:nowrap;
+    }
+
+    /* Responsif */
+    @media (max-width:860px){
+      .header-inner{grid-template-columns:1fr;row-gap:10px;text-align:center}
+      .brand{justify-self:start;text-align:left}
+      .main-nav{justify-self:center}
+      .main-nav ul{flex-wrap:wrap;justify-content:center}
+      .cta{justify-self:center}
+    }
+
+    /* ======= FORM ======= */
+    .hero{
+      max-width:720px;margin:36px auto;background:#fff;border:1px solid #cfcfcf;border-radius:8px;padding:24px
+    }
+    h2{text-align:center;margin-bottom:18px}
+    label{display:block;margin-bottom:6px;font-weight:600}
+    input,textarea,select{width:100%;margin-bottom:15px;padding:10px 12px;border:1px solid #cfcfcf;border-radius:6px;font-size:14px;outline:none}
+    input:focus,textarea:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,116,228,.12)}
+    textarea{min-height:120px;resize:vertical}
+    button{padding:12px 20px;border:none;background:var(--primary);color:#fff;border-radius:8px;cursor:pointer;font-weight:700}
+    button:hover{opacity:.95}
+
+    footer a{color:#333;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="header-inner">
+      <!-- Pojok kiri: Logo + DPPKBP3A + DINAS -->
+      <div class="brand">
+        <img src="logo.jpg" alt="Logo DPPKBP3A">
+        <div class="brand-text">
+          <div class="brand-title">DPPKBP3A</div>
+          <div class="brand-subtitle">Dinas Pemberdayaan Perempuan Dan Anak</div>
+        </div>
+      </div>
+
+      <!-- Tengah: menu navigasi -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index (3).html">Informasi</a></li>
+          <li><a href="index (5).html">Berita</a></li>
+          <li><a href="index (4).html">Tentang Kami</a></li>
+          
+        </ul>
+      </nav>
+
+      <!-- Pojok kanan: tombol kontak (fitur tetap ada) -->
+      <div class="cta">
+        <a href="index (4).html" class="btn-kontak">Kontak</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= FORM ======= -->
+  <div class="hero">
+    <h2>Form Laporan Tindakan Bullying/Kekerasan Pada Anak</h2>
+
+    <form action="https://formspree.io/f/mqalbodp" method="POST">
+      <label for="Nama">Nama:</label>
+      <input id="nama" type="text" name="Nama" required>
+
+      <label for="Kontak">Email atau Nomor Telepon:</label>
+      <input id="kontak" type="text" name="Kontak" placeholder="Contoh: nama@email.com atau 081200000" required>
+
+      <label for="Alamat">Alamat:</label>
+      <input id="alamat" type="text" name="Alamat" placeholder="Nama jalan, kelurahan, kecamatan, kabupaten/kota" required>
+
+      <label for="Jenis Kasus">Jenis Kasus:</label>
+      <select id="jenis_kasus" name="Jenis Kasus" required>
+        <option value="" selected disabled>-- Pilih Jenis Kasus --</option>
+        <option>Penelantaran</option>
+        <option>Trafficking</option>
+        <option>Bullying</option>
+        <option>Eksploitasi</option>
+        <option>Kekerasan Fisik</option>
+        <option>Kekerasan Psikologis</option>
+        <option>Kekerasan Seksual</option>
+        <option>Perilaku Menyimpang</option>
+        <option>Lainnya</option>
+      </select>
+
+      <label for="pesan">Deskripsi Kejadian (Waktu, Tempat, Kronologi):</label>
+      <textarea id="pesan" name="Pesan" rows="5" required></textarea>
+
+      <p style="padding-bottom:10px"><b>Semua informasi yang Anda berikan bersifat rahasia dan akan dilindungi oleh DPPKBP3A KAMPAR.</b></p>
+
+      <!-- Honeypot anti-spam -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <button type="submit">Kirim Laporan</button>
+    </form>
+  </div>
+
+  <footer style="background:#fff;border-top:1px solid #ccc;padding:20px 60px;text-align:center;margin-top:50px">
+    <p><strong>DPPKBP3A Kabupaten Kampar</strong></p>
+    <p>Jalan Prof M. Yamin SH, Kec. Bangkinang Kota, Kel. Langgini - Kab. Kampar</p>
+    <p><a href="https://dppkb.kamparkab.go.id/">Website : https://dppkb.kamparkab.go.id/</a> | Email: <a href="mailto:dppkbpppakamparkab@gmail.com">dppkbpppakamparkab@gmail.com</a> | Telp: (0762)</p>
+    <p style="margin-top:10px">&copy; 2025 Stop Bullying & Kekerasan Pada Anak</p>
+  </footer>
+</body>
+</html>

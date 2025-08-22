@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Bullying Campaign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#0074e4;
+      --text:#333;
+      --muted:#666;
+      --border:#e6e6e6;
+      --bg:#fff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+    body{background:var(--bg);color:var(--text)}
+
+    /* ===== HEADER (brand kiri pojok, menu di tengah, CTA kanan) ===== */
+    header{background:#fff;border-bottom:1px solid #eee}
+    .header-inner{
+      width:100%;
+      padding:12px 0;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;  /* kiri & kanan seimbang -> nav pasti di tengah */
+      align-items:center;
+    }
+    .brand{
+      grid-column:1;justify-self:start;
+      display:flex;align-items:flex-start;gap:12px;
+      padding-left:12px;                 /* beri jarak kecil dari tepi kiri */
+      min-width:260px;
+    }
+    .brand img{height:44px;width:auto;display:block}
+    .brand-text{line-height:1.1}
+    .brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
+    .brand-subtitle{font-size:12.5px;color:var(--muted)}
+
+    .main-nav{grid-column:2;justify-self:center}
+    .main-nav ul{list-style:none;display:flex;gap:30px}
+    .main-nav a{color:#555;text-decoration:none;font-weight:600}
+
+    .cta{grid-column:3;justify-self:end;padding-right:12px}
+    .btn-laporkan{
+      text-decoration:none;border:2px solid var(--primary);color:var(--primary);
+      padding:8px 16px;border-radius:999px;font-weight:700;background:#fff;white-space:nowrap;
+    }
+
+    @media (max-width:860px){
+      .header-inner{grid-template-columns:1fr;row-gap:10px;text-align:center}
+      .brand{justify-self:start;text-align:left}
+      .main-nav{justify-self:center}
+      .main-nav ul{flex-wrap:wrap;justify-content:center}
+      .cta{justify-self:center}
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section{padding:60px 20px;background:#f4f9ff;text-align:center}
+    .contact-section h2{font-size:2rem;margin-bottom:40px;color:var(--primary)}
+    .contact-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto}
+    .contact-card{background:#fff;border:1px solid #ccc;border-radius:12px;padding:20px;flex:1 1 200px;max-width:300px;box-shadow:0 2px 5px rgba(0,0,0,.05)}
+    .contact-card h3{color:var(--primary);margin-bottom:10px;font-size:1.1rem}
+    .contact-card p,.contact-card a{font-size:.95rem;color:#333;text-decoration:none}
+    .map-box{width:100%;max-width:1000px;margin:40px auto 0;border-radius:12px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+    iframe{width:100%;height:300px;border:none}
+
+    @media (max-width:600px){.contact-card{max-width:100%}}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-inner">
+      <!-- Pojok kiri: logo + teks -->
+      <div class="brand">
+        <img src="logo.jpg" alt="Logo DPPKBP3A">
+        <div class="brand-text">
+          <div class="brand-title">DPPKBP3A</div>
+          <div class="brand-subtitle">Dinas Pemberdayaan Perempuan Dan Anak</div>
+        </div>
+      </div>
+
+      <!-- Tengah: menu navigasi -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index (3).html">Informasi</a></li>
+          <li><a href="index (5).html">Berita</a></li>
+          <li><a href="index (4).html">Tentang Kami</a></li>
+        </ul>
+      </nav>
+
+      <!-- Kanan: tombol CTA -->
+      <div class="cta">
+        <a href="index (6).html" class="btn-laporkan">Laporkan</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="contact-section">
+    <h2>Informasi Kontak</h2>
+
+    <div class="contact-cards">
+      <div class="contact-card">
+        <h3>Telepon</h3>
+        <p>0762-</p>
+      </div>
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p><a href="mailto:dppkbpppakamparkab@gmail.com">dppkbpppakamparkab@gmail.com</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Website</h3>
+        <a href="https://dppkb.kamparkab.go.id/" target="_blank" rel="noopener">https://dppkb.kamparkab.go.id/</a>
+      </div>
+    </div>
+
+    <div class="map-box">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7460248395423!2d101.01862647472338!3d0.3449191996517013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d515b4e8bd8fd5%3A0xfecb2731ef0b8645!2sDPPKBP3A%20KABUPATEN%20KAMPAR!5e0!3m2!1sid!2sid!4v1753894623662!5m2!1sid!2sid"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+</body>
+</html>

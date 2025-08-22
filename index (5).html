@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berita Bullying Indonesia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .news-meta {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .news-link {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #0074e4;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .news-card {
+        padding: 15px;
+      }
+    }
+
+      header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+    }
+    .lang-contact {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .btn-kontak {
+      padding: 8px 16px;
+      border: 2px solid #0074e4;
+      color: #0074e4;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+   <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="">
+      <strong>DPPKBP3A</strong>
+    </div>
+    <nav>
+      <ul>
+         <li><a href="index.html">Home</a></li>
+        <li><a href="index (3).html">Informasi</a></li>
+        <li><a href="index (5).html">Berita</a></li>
+        <li><a href="index (4).html">Tentang Kami</a></li>
+      </ul>
+    </nav>
+    <div class="lang-contact">
+      <a href="index (6).html" class="btn-kontak">Laporkan</a>
+    </div>
+  </header>
+
+  <h1>Berita Terkini: Kasus Bullying & Kekerasan Anak di Indonesia</h1>
+  <div class="news-container" id="news-container">
+    <p>Memuat berita...</p>
+  </div>
+
+  <script>
+    const API_KEY = 'c93c3d5b2d3b41beb962a92b291f73c3'; // Ganti dengan API key milikmu
+    const query = 'bullying OR "kekerasan anak" OR "kekerasan terhadap anak"';
+    const API_URL = `https://api.worldnewsapi.com/search-news?text=${encodeURIComponent(query)}&source-country=id&language=id&number=15&api-key=${API_KEY}`;
+
+    async function fetchBerita() {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const container = document.getElementById('news-container');
+        container.innerHTML = '';
+
+        const beritaTerkait = (data.news || []).filter(item =>
+          /(bully|kekerasan anak|kekerasan terhadap anak)/i.test(item.title + ' ' + item.text)
+        );
+
+        if (beritaTerkait.length === 0) {
+          container.innerHTML = '<p>Tidak ada berita terkait saat ini.</p>';
+          return;
+        }
+
+        beritaTerkait.forEach(berita => {
+          const card = document.createElement('div');
+          card.className = 'news-card';
+          card.innerHTML = `
+            <div class="news-title">${berita.title}</div>
+            <div class="news-meta">${berita.publish_date.split('T')[0]} | ${berita.source}</div>
+            <a class="news-link" href="${berita.url}" target="_blank">Baca selengkapnya</a>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById('news-container').innerHTML = '<p>Gagal memuat berita. Pastikan API key valid dan koneksi internet aktif.</p>';
+      }
+    }
+
+    fetchBerita();
+  </script>
+
+</body>
+</html>
