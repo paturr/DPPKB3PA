@@ -8,88 +8,59 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root{
-      --primary:#0074e4;
-      --text:#333;
-      --muted:#666;
-      --border:#e6e6e6;
+      --primary:#0074e4; --text:#333; --muted:#666;
+      --penelantaran:#2456a6;
+      --trafficking:#4f86ff;
+      --eksploitasi:#00a8e8;
+      --seksual:#f39c12;
+      --psikis:#1abc9c;
+      --fisik:#2d98da;
+      --lainnya:#7f8c8d;
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
     body{background:#fff;color:var(--text)}
-
-    /* ===== HEADER (SAMA DENGAN SEBELUMNYA) ===== */
     header{background:#fff;border-bottom:1px solid #eee}
-    .header-inner{
-      width:100%;
-      padding:12px 0;
-      display:grid;
-      grid-template-columns:1fr auto 1fr; /* kiri & kanan seimbang -> nav tepat di tengah */
-      align-items:center;
-    }
-    /* Kiri: brand di pojok kiri */
-    .brand{
-      grid-column:1;justify-self:start;
-      display:flex;align-items:flex-start;gap:12px;
-      padding-left:12px;min-width:260px;
-    }
-    .brand img{height:44px;width:auto;display:block}
-    .brand-text{line-height:1.1}
+    .header-inner{width:100%;padding:12px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;}
+    .brand{grid-column:1;justify-self:start;display:flex;gap:12px;padding-left:12px;min-width:260px;}
+    .brand img{height:44px}
     .brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
     .brand-subtitle{font-size:12.5px;color:var(--muted)}
-    /* Tengah: menu */
     .main-nav{grid-column:2;justify-self:center}
     .main-nav ul{list-style:none;display:flex;gap:30px}
     .main-nav a{color:#555;text-decoration:none;font-weight:600}
-    /* Kanan: CTA */
     .cta{grid-column:3;justify-self:end;padding-right:12px}
-    .btn-laporkan{
-      text-decoration:none;border:2px solid var(--primary);color:var(--primary);
-      padding:8px 16px;border-radius:999px;font-weight:700;background:#fff;white-space:nowrap;
-    }
-    /* Responsif */
+    .btn-laporkan{border:2px solid var(--primary);color:var(--primary);padding:8px 16px;border-radius:999px;font-weight:700;text-decoration:none;background:#fff}
     @media (max-width:860px){
       .header-inner{grid-template-columns:1fr;row-gap:10px;text-align:center}
       .brand{justify-self:start;text-align:left}
-      .main-nav{justify-self:center}
       .main-nav ul{flex-wrap:wrap;justify-content:center}
       .cta{justify-self:center}
     }
-
-    /* ===== HERO & STATISTIK (tetap seperti semula) ===== */
     .hero{background:#f5f5f5;text-align:center;padding:60px 20px}
     .hero h1{font-size:3rem;color:#2456a6;margin-bottom:20px}
     .hero p{font-size:1.1rem;color:#555;max-width:700px;margin:auto}
-    .btn-learn{
-      display:inline-block;margin-top:20px;padding:10px 20px;border:2px solid #2456a6;
-      color:#2456a6;border-radius:30px;text-decoration:none;font-weight:bold
-    }
+    .btn-learn{display:inline-block;margin-top:20px;padding:10px 20px;border:2px solid #2456a6;color:#2456a6;border-radius:30px;text-decoration:none;font-weight:bold}
     .section-statistik{padding:60px 20px;background-color:#fffaf9}
     .section-statistik h2{text-align:center;font-size:2rem;color:#c0392b;margin-bottom:40px}
-    .statistik-container{max-width:1000px;margin:auto;background:whitesmoke;padding:30px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+    .statistik-container{max-width:1100px;margin:auto;background:whitesmoke;padding:30px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.1)}
     canvas{margin-top:30px}
-    table{width:100%;margin-top:20px;border-collapse:collapse;text-align:center;background:#fff}
-    th,td{padding:12px;border:1px solid #ddd}
-    th{background-color:#f9dada;color:#c0392b}
+    .table-wrap{overflow-x:auto;margin-top:20px}
+    table{width:100%;border-collapse:collapse;text-align:center;background:#fff;min-width:900px}
+    th,td{padding:10px;border:1px solid #e5e5e5}
+    th{background:#eaf2ff;color:#2456a6}
     .note{font-size:.9em;color:#666;margin-top:10px;text-align:center}
-    @media (max-width:768px){
-      table{font-size:.9rem;overflow-x:auto}
-    }
   </style>
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
   <header>
     <div class="header-inner">
-      <!-- Brand kiri -->
       <div class="brand">
         <img src="logo.jpg" alt="Logo DPPKBP3A">
-        <div class="brand-text">
+        <div>
           <div class="brand-title">DPPKBP3A</div>
           <div class="brand-subtitle">Dinas Pemberdayaan Perempuan Dan Anak</div>
         </div>
       </div>
-
-      <!-- Menu tengah -->
       <nav class="main-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -98,11 +69,7 @@
           <li><a href="index (4).html">Tentang Kami</a></li>
         </ul>
       </nav>
-
-      <!-- CTA kanan -->
-      <div class="cta">
-        <a href="index (6).html" class="btn-laporkan">Laporkan</a>
-      </div>
+      <div class="cta"><a href="index (6).html" class="btn-laporkan">Laporkan</a></div>
     </div>
   </header>
 
@@ -113,50 +80,89 @@
   </section>
 
   <section class="section-statistik" id="statistik">
-    <h2>Statistik Kasus Kekerasan Pada Anak di Indonesia</h2>
+    <h2>Statistik Kasus Kekerasan Pada Anak</h2>
     <div class="statistik-container">
-      <canvas id="bullyingChart" height="300"></canvas>
-      <table>
-        <thead>
-          <tr>
-            <th>Tahun</th>
-            <th>Bullying</th>
-            <th>Kekerasan Fisik</th>
-            <th>Kekerasan Seksual</th>
-            <th>Total Kekerasan Anak</th>
-            <th>Sumber</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>2020</td><td>119</td><td>870</td><td>1100</td><td>2089</td><td>KPAI</td></tr>
-          <tr><td>2021</td><td>53</td><td>730</td><td>950</td><td>1733</td><td>JPPI</td></tr>
-          <tr><td>2022</td><td>226</td><td>1050</td><td>1230</td><td>2506</td><td>KPAI</td></tr>
-          <tr><td>2023</td><td>3800</td><td>2000</td><td>2100</td><td>7900</td><td>SIMFONI-PPA</td></tr>
-          <tr><td>2024</td><td>4350</td><td>2100</td><td>2250</td><td>8700</td><td>SIMFONI-PPA</td></tr>
-        </tbody>
-      </table>
-      <p class="note">Sumber data: KPAI, JPPI, SIMFONI-PPA (2020–2024)</p>
+      <canvas id="kasusChart" height="320"></canvas>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tahun</th>
+              <th>Penelantaran</th>
+              <th>Trafficking</th>
+              <th>Eksploitasi</th>
+              <th>Seksual</th>
+              <th>KDRT (Psikis)</th>
+              <th>KDRT (Fisik)</th>
+              <th>Lainnya</th>
+              <th>Total</th>
+              <th>Sumber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2021</td><td>10</td><td>1</td><td>0</td><td>66</td><td>0</td><td>11</td><td>51</td><td>139</td><td>UPTD PPA Kampar</td></tr>
+            <tr><td>2022</td><td>6</td><td>0</td><td>0</td><td>53</td><td>1</td><td>16</td><td>118</td><td>194</td><td>UPTD PPA Kampar</td></tr>
+            <tr><td>2023</td><td>10</td><td>3</td><td>6</td><td>67</td><td>2</td><td>8</td><td>70</td><td>166</td><td>UPTD PPA Kampar</td></tr>
+            <tr><td>2024</td><td>18</td><td>0</td><td>2</td><td>78</td><td>5</td><td>9</td><td>65</td><td>177</td><td>UPTD PPA Kampar</td></tr>
+            <tr><td>2025 (Jan–Mar)</td><td>1</td><td>0</td><td>0</td><td>17</td><td>0</td><td>6</td><td>15</td><td>39</td><td>UPTD PPA Kampar</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">Catatan: 2025 adalah data Januari–Maret. 2023 pada slide rinci menulis “Lainnya = 76”, namun total resmi 166—di sini digunakan 70 agar konsisten.</p>
     </div>
   </section>
 
   <script>
-    const ctx = document.getElementById('bullyingChart').getContext('2d');
+    const labels = ['2021','2022','2023','2024','2025 (Jan–Mar)'];
+    const dPenelantaran = [10, 6, 10, 18, 1];
+    const dTrafficking  = [1, 0, 3, 0, 0];
+    const dEksploitasi  = [0, 0, 6, 2, 0];
+    const dSeksual      = [66, 53, 67, 78, 17];
+    const dPsikis       = [0, 1, 2, 5, 0];
+    const dFisik        = [11, 16, 8, 9, 6];
+    const dLainnya      = [51,118,70,65,15];
+
+    const css = getComputedStyle(document.documentElement);
+    const C = k => css.getPropertyValue(k).trim();
+
+    const ctx = document.getElementById('kasusChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['2020','2021','2022','2023','2024'],
+        labels,
         datasets: [
-          { label: 'Bullying', data: [119,53,226,3800,4350], backgroundColor:'#e74c3c' },
-          { label: 'Kekerasan Fisik', data: [870,730,1050,2000,2100], backgroundColor:'#3498db' },
-          { label: 'Kekerasan Seksual', data: [1100,950,1230,2100,2250], backgroundColor:'#f39c12' }
+          { label:'Penelantaran', data:dPenelantaran, backgroundColor:C('--penelantaran'), stack:'kasus' },
+          { label:'Trafficking',  data:dTrafficking,  backgroundColor:C('--trafficking'),  stack:'kasus' },
+          { label:'Eksploitasi',  data:dEksploitasi,  backgroundColor:C('--eksploitasi'),  stack:'kasus' },
+          { label:'Seksual',      data:dSeksual,      backgroundColor:C('--seksual'),      stack:'kasus' },
+          { label:'KDRT (Psikis)',data:dPsikis,       backgroundColor:C('--psikis'),       stack:'kasus' },
+          { label:'KDRT (Fisik)', data:dFisik,        backgroundColor:C('--fisik'),        stack:'kasus' },
+          { label:'Lainnya',      data:dLainnya,      backgroundColor:C('--lainnya'),      stack:'kasus' }
         ]
       },
       options: {
         responsive:true,
-        plugins:{ tooltip:{ callbacks:{ label:c=>`${c.dataset.label}: ${c.raw} kasus` } } },
+        plugins:{
+          legend:{ position:'top' },
+          tooltip:{
+            callbacks:{
+              label: (ctx)=>{
+                const total =
+                  dPenelantaran[ctx.dataIndex] + dTrafficking[ctx.dataIndex] +
+                  dEksploitasi[ctx.dataIndex] + dSeksual[ctx.dataIndex] +
+                  dPsikis[ctx.dataIndex] + dFisik[ctx.dataIndex] + dLainnya[ctx.dataIndex];
+                const val = ctx.parsed.y;
+                const pct = total ? (val/total*100) : 0;
+                return `${ctx.dataset.label}: ${val} kasus (${pct.toFixed(1)}%)`;
+              }
+            }
+          }
+        },
         scales:{
-          y:{ beginAtZero:true, title:{display:true,text:'Jumlah Kasus'} },
-          x:{ title:{display:true,text:'Tahun'} }
+          x:{ stacked:true, title:{display:true,text:'Tahun'} },
+          y:{ stacked:true, beginAtZero:true, title:{display:true,text:'Jumlah Kasus'} }
         }
       }
     });
