@@ -4,175 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Berita Bullying Indonesia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    :root{
+      --primary:#0074e4;
+      --text:#2c3e50;
+      --muted:#666;
+      --border:#eee;
     }
 
-    body {
-      background: #fafafa;
-      margin: 0;
-      padding: 0;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+
+    body{background:#fafafa;color:var(--text)}
+
+    h1{
+      text-align:center;
+      color:#2c3e50;
+      margin:28px 0 30px;
+      font-weight:800;
     }
 
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 30px;
+    /* ===== Header mengikuti test.html ===== */
+    header{background:#fff;border-bottom:1px solid var(--border)}
+    .header-inner{
+      width:100%;
+      padding:12px 0;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+    }
+    .brand{
+      grid-column:1;justify-self:start;
+      display:flex;align-items:flex-start;gap:12px;
+      padding-left:12px;min-width:260px;
+    }
+    .brand img{height:44px;width:auto;display:block}
+    .brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
+    .brand-subtitle{font-size:12.5px;color:var(--muted)}
+    .main-nav{grid-column:2;justify-self:center}
+    .main-nav ul{list-style:none;display:flex;gap:30px}
+    .main-nav a{color:#555;text-decoration:none;font-weight:600}
+    .cta{grid-column:3;justify-self:end;padding-right:12px}
+    .btn-laporkan{
+      text-decoration:none;border:2px solid var(--primary);color:var(--primary);
+      padding:8px 16px;border-radius:999px;font-weight:700;background:#fff;white-space:nowrap;
+    }
+    @media (max-width:860px){
+      .header-inner{grid-template-columns:1fr;row-gap:10px;text-align:center}
+      .brand{justify-self:start;text-align:left}
+      .main-nav{justify-self:center}
+      .main-nav ul{flex-wrap:wrap;justify-content:center}
+      .cta{justify-self:center}
     }
 
-    .news-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+    /* ===== Kartu berita (tetap) ===== */
+    .news-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+      padding:0 16px 40px;
+      max-width:1100px;
+      margin:0 auto;
     }
+    .news-card{
+      background:#fff;border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,.08);
+      padding:20px;transition:transform .2s;
+    }
+    .news-card:hover{transform:translateY(-5px)}
+    .news-title{font-size:1.05rem;font-weight:700;color:#333;margin-bottom:8px}
+    .news-meta{font-size:.85rem;color:#777;margin-bottom:8px}
+    .news-link{display:inline-block;margin-top:10px;text-decoration:none;color:var(--primary);font-weight:600}
 
-    .news-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.2s;
-    }
-
-    .news-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .news-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .news-meta {
-      font-size: 0.85rem;
-      color: #777;
-      margin-bottom: 10px;
-    }
-
-    .news-link {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #0074e4;
-      font-weight: 500;
-    }
-
-    @media (max-width: 600px) {
-      .news-card {
-        padding: 15px;
-      }
-    }
-
-      header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #555;
-      font-weight: 500;
-    }
-    .lang-contact {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .btn-kontak {
-      padding: 8px 16px;
-      border: 2px solid #0074e4;
-      color: #0074e4;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    @media (max-width:600px){ .news-card{padding:16px} }
   </style>
 </head>
 <body>
-   <header>
-    <div class="logo">
-      <img src="logo.jpg" alt="">
-      <strong>DPPKBP3A</strong>
-    </div>
-    <nav>
-      <ul>
-         <li><a href="index.html">Home</a></li>
-        <li><a href="index (3).html">Informasi</a></li>
-        <li><a href="index (5).html">Berita</a></li>
-        <li><a href="index (4).html">Tentang Kami</a></li>
-      </ul>
-    </nav>
-    <div class="lang-contact">
-      <a href="index (6).html" class="btn-kontak">Laporkan</a>
+
+  <!-- Header baru (disamakan dengan test.html) -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.jpg" alt="Logo DPPKBP3A">
+        <div>
+          <div class="brand-title">DPPKBP3A</div>
+          <div class="brand-subtitle">Bidang Perlindungan Perempuan Dan Anak</div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index (3).html">Informasi</a></li>
+          <li><a href="index (5).html">Berita</a></li>
+          <li><a href="index (4).html">Tentang Kami</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <a href="index (6).html" class="btn-laporkan">Laporkan</a>
+      </div>
     </div>
   </header>
 
   <h1>Berita Terkini: Kasus Bullying & Kekerasan Anak di Indonesia</h1>
+
   <div class="news-container" id="news-container">
-    <p>Memuat berita...</p>
+    <p style="grid-column:1/-1;text-align:center">Memuat berita...</p>
   </div>
 
   <script>
-    const API_KEY = 'c93c3d5b2d3b41beb962a92b291f73c3'; // Ganti dengan API key milikmu
+    const API_KEY = 'c93c3d5b2d3b41beb962a92b291f73c3';
     const query = 'bullying OR "kekerasan anak" OR "kekerasan terhadap anak"';
     const API_URL = `https://api.worldnewsapi.com/search-news?text=${encodeURIComponent(query)}&source-country=id&language=id&number=15&api-key=${API_KEY}`;
 
-    async function fetchBerita() {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+    async function fetchBerita(){
+      try{
+        const res = await fetch(API_URL);
+        const data = await res.json();
         const container = document.getElementById('news-container');
         container.innerHTML = '';
 
-        const beritaTerkait = (data.news || []).filter(item =>
-          /(bully|kekerasan anak|kekerasan terhadap anak)/i.test(item.title + ' ' + item.text)
+        const beritaTerkait = (data.news||[]).filter(item =>
+          /(bully|kekerasan anak|kekerasan terhadap anak)/i.test((item.title||'')+' '+(item.text||''))
         );
 
-        if (beritaTerkait.length === 0) {
-          container.innerHTML = '<p>Tidak ada berita terkait saat ini.</p>';
+        if(beritaTerkait.length===0){
+          container.innerHTML = '<p style="grid-column:1/-1;text-align:center">Tidak ada berita terkait saat ini.</p>';
           return;
         }
 
-        beritaTerkait.forEach(berita => {
+        beritaTerkait.forEach(berita=>{
           const card = document.createElement('div');
           card.className = 'news-card';
+          const tanggal = (berita.publish_date||'').split('T')[0] || '-';
           card.innerHTML = `
-            <div class="news-title">${berita.title}</div>
-            <div class="news-meta">${berita.publish_date.split('T')[0]} | ${berita.source}</div>
-            <a class="news-link" href="${berita.url}" target="_blank">Baca selengkapnya</a>
+            <div class="news-title">${berita.title||'-'}</div>
+            <div class="news-meta">${tanggal} | ${berita.source||'-'}</div>
+            <a class="news-link" href="${berita.url}" target="_blank" rel="noopener">Baca selengkapnya</a>
           `;
           container.appendChild(card);
         });
-      } catch (err) {
-        document.getElementById('news-container').innerHTML = '<p>Gagal memuat berita. Pastikan API key valid dan koneksi internet aktif.</p>';
+      }catch(e){
+        document.getElementById('news-container').innerHTML =
+          '<p style="grid-column:1/-1;text-align:center">Gagal memuat berita. Pastikan API key valid dan koneksi internet aktif.</p>';
       }
     }
-
     fetchBerita();
   </script>
-
 </body>
 </html>
